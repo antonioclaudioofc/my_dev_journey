@@ -11,27 +11,11 @@ export default function App() {
   return (
     <main className="w-full bg-[#1e242c] text-white">
       <Navbar />
-
-      <section id="home">
-        <Hero />
-      </section>
-
-      <section id="about">
-        <About />
-      </section>
-
-      <section id="skills">
-        <Skills />
-      </section>
-
-      <section id="projects">
-        <Projects />
-      </section>
-
-      <section id="contact">
-        <Contact />
-      </section>
-
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
       <Footer />
       <ScrollToTop />
     </main>

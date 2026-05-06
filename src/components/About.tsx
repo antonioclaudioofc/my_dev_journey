@@ -28,16 +28,17 @@ export function About() {
             </h2>
 
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-6 lg:max-w-2xl">
-              Sou um desenvolvedor full stack com graduação em Ciência da
-              Computação pelo Instituto Federal do Maranhão (IFMA). Tenho
-              experiência sólida em desenvolvimento web, com foco em React,
-              Next.js, Python (FastAPI, Django), TypeScript, Firebase e SQL.
+              Sou <strong>Antonio Claudio</strong>, um desenvolvedor full stack
+              graduado em Ciência da Computação pelo Instituto Federal do
+              Maranhão (IFMA). Tenho experiência sólida em desenvolvimento web
+              moderno, com foco em React, Next.js, Python (FastAPI, Django),
+              TypeScript, Firebase e SQL.
             </p>
             <p className="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 lg:max-w-2xl">
-              Sou entusiasta de tecnologias emergentes como Docker e RabbitMQ,
-              sempre aplicando boas práticas de desenvolvimento, metodologias
-              ágeis e princípios de escalabilidade. Busco uma oportunidade como
-              Desenvolvedor Full Stack ou Backend
+              Como desenvolvedor full stack, sou entusiasta de tecnologias
+              emergentes como Docker e RabbitMQ, sempre aplicando boas práticas
+              de desenvolvimento (Clean Code), metodologias ágeis e princípios
+              de escalabilidade para criar soluções robustas e eficientes.
             </p>
 
             <div className="flex justify-center lg:justify-start">
@@ -45,6 +46,7 @@ export function About() {
                 href="/Antonio Claudio Teixeira Alves.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Baixar currículo de Antonio Claudio"
                 className="text-white font-bold text-lg sm:text-xl hover:text-teal-400 transition-colors flex items-center gap-2 group"
               >
                 Baixar CV
@@ -65,8 +67,9 @@ export function About() {
             <div className="relative w-full max-w-[320px] sm:max-w-[450px] lg:max-w-[550px] aspect-square flex items-center justify-center">
               <img
                 src={researchAssistantImg}
-                alt="Research Assistant Illustration"
+                alt="Ilustração representando Antonio Claudio como Desenvolvedor Full Stack"
                 className="w-full h-full object-contain relative z-10"
+                loading="lazy"
               />
             </div>
           </motion.div>

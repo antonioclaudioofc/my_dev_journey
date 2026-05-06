@@ -45,6 +45,33 @@ export function Navbar() {
     };
   }, []);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      setIsOpen(false);
+
+      setTimeout(() => {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+
+        window.history.pushState(null, "", href);
+        setActiveSection(targetId);
+      }, 100);
+    }
+  };
+
   return (
     <motion.nav
       className="fixed top-0 left-0 right-0 z-50 bg-[#1e242c] border-b border-white/5"
@@ -59,7 +86,11 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
           >
-            <a href="#home" className="flex items-center">
+            <a
+              href="#home"
+              className="flex items-center"
+              onClick={(e) => handleNavClick(e, "#home")}
+            >
               <span className="font-extrabold text-2xl text-white tracking-tight">
                 Antonio Claudio
               </span>
@@ -80,6 +111,7 @@ export function Navbar() {
                 <a
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={`text-sm font-medium transition-colors duration-300 ${
                     isActive ? "text-white" : "text-slate-400 hover:text-white"
                   }`}
@@ -149,7 +181,7 @@ export function Navbar() {
                 className={`text-base font-medium transition-colors py-2 ${
                   isActive ? "text-teal-400" : "text-slate-400"
                 }`}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.label}
               </a>

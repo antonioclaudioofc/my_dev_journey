@@ -5,6 +5,7 @@ import codeReviewImg from "../assets/code-review.svg";
 export function Hero() {
   return (
     <motion.header
+      id="home"
       className="w-full min-h-screen bg-[#1e242c] relative flex flex-col justify-center overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -53,10 +54,10 @@ export function Hero() {
               className="font-extrabold mb-8 leading-[1.05] uppercase tracking-wider"
             >
               <span className="text-white block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl leading-tight">
-                Desenvolvedor
+                Antonio Claudio
               </span>
-              <span className="text-teal-500 block text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl mt-1 leading-tight">
-                Full Stack
+              <span className="text-teal-500 block text-2xl sm:text-3xl md:text-3xl lg:text-3xl xl:text-4xl mt-2 leading-tight">
+                Desenvolvedor Full Stack
               </span>
             </motion.h1>
 
