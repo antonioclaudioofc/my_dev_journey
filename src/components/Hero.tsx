@@ -74,7 +74,7 @@ export function Hero() {
                 Contrate-me
               </a>
               <a
-                href="/Antonio Claudio Teixeira Alves.pdf"
+                href="/Antonio_Claudio_Teixeira_Alves.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto justify-center px-8 py-3.5 bg-[#2a313b] hover:bg-[#343d4a] text-white rounded-full font-bold text-sm sm:text-base transition-colors flex items-center gap-3 border border-white/5"

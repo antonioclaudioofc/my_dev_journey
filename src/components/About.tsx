@@ -43,7 +43,7 @@ export function About() {
 
             <div className="flex justify-center lg:justify-start">
               <a
-                href="/Antonio Claudio Teixeira Alves.pdf"
+                href="/Antonio_Claudio_Teixeira_Alves.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Baixar currículo de Antonio Claudio"
