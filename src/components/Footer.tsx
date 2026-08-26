@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedinIn, FaWhatsapp, FaCode } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
 const socialLinks = [
   {
@@ -20,17 +20,27 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-white/5 bg-[#1e242c] px-4 py-16">
+    <footer
+      className="w-full border-t px-4 py-16"
+      style={{
+        backgroundColor: "var(--color-bg)",
+        borderColor: "var(--color-border)",
+      }}
+    >
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-12">
         <div className="flex flex-col items-center gap-8">
           <div className="text-center flex flex-col items-center">
-            <span className="flex h-12 w-12 items-center justify-center rounded-md bg-[#242b35] text-teal-500 mb-6 border border-white/5">
-              <FaCode className="text-2xl" />
-            </span>
-            <p className="text-3xl font-extrabold text-white tracking-widest uppercase mb-2">
-              Antonio <span className="text-teal-500">Claudio</span>
+            <p
+              className="font-heading text-2xl font-bold tracking-wide mb-2"
+              style={{ color: "var(--color-text)" }}
+            >
+              Antonio{" "}
+              <span style={{ color: "var(--color-accent)" }}>Claudio</span>
             </p>
-            <p className="text-slate-400 font-medium tracking-wide">
+            <p
+              className="font-medium tracking-wide"
+              style={{ color: "var(--color-text-muted)" }}
+            >
               Desenvolvedor Full Stack
             </p>
           </div>
@@ -45,18 +55,38 @@ export function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex h-12 w-12 items-center justify-center rounded-md border border-white/5 bg-[#242b35] text-slate-400 transition-all hover:border-teal-500/50 hover:bg-[#1e242c] hover:text-teal-500"
+                  className="group flex h-12 w-12 items-center justify-center rounded-md border transition-all duration-200"
+                  style={{
+                    borderColor: "var(--color-border)",
+                    backgroundColor: "var(--color-bg-alt)",
+                    color: "var(--color-text-muted)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor =
+                      "var(--color-accent-border)";
+                    e.currentTarget.style.color = "var(--color-accent)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "var(--color-border)";
+                    e.currentTarget.style.color = "var(--color-text-muted)";
+                  }}
                   aria-label={link.label}
                 >
-                  <Icon className="text-xl group-hover:scale-110 transition-transform" />
+                  <Icon className="text-xl group-hover:scale-110 transition-transform duration-200" />
                 </a>
               );
             })}
           </div>
 
-          <div className="w-full h-px bg-white/5 mt-4 mb-2 max-w-md"></div>
+          <div
+            className="w-full h-px mt-4 mb-2 max-w-md"
+            style={{ backgroundColor: "var(--color-border)" }}
+          ></div>
 
-          <p className="text-sm font-medium text-slate-500">
+          <p
+            className="text-sm font-medium"
+            style={{ color: "var(--color-text-muted)" }}
+          >
             © {new Date().getFullYear()} Antonio Claudio. Todos os direitos
             reservados.
           </p>

@@ -1,9 +1,8 @@
 import { motion } from "motion/react";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaCode } from "react-icons/fa";
 import { FaEarthAmericas } from "react-icons/fa6";
 import arenaManagerImg from "../assets/arena-manager.png";
 import aniverlembreImg from "../assets/aniver-lembre.png";
-import apiAudioForceImg from "../assets/audio-force.png";
 import agendaSmileApiImg from "../assets/agenda-smile-api.png";
 import arenaManagerApiImg from "../assets/arena-manager-api.png";
 
@@ -12,13 +11,14 @@ type Project = {
   subtitle?: string;
   description: string;
   tech: string[];
-  image: string;
+  image?: string;
   imageAlt: string;
   links?: { label: string; href: string }[];
 };
 
 const techStyles: Record<string, string> = {
   React: "bg-teal-500/10 text-teal-300 border-teal-500/30",
+  "Next.js": "bg-slate-500/10 text-slate-200 border-slate-500/30",
   TypeScript: "bg-indigo-500/10 text-indigo-300 border-indigo-500/30",
   JavaScript: "bg-amber-500/10 text-amber-300 border-amber-500/30",
   Python: "bg-blue-500/10 text-blue-300 border-blue-500/30",
@@ -29,16 +29,35 @@ const techStyles: Record<string, string> = {
   Docker: "bg-blue-600/10 text-blue-400 border-blue-600/30",
   HTML: "bg-orange-500/10 text-orange-300 border-orange-500/30",
   Tailwind: "bg-teal-500/10 text-teal-300 border-teal-500/30",
-  SMTP: "bg-slate-500/10 text-slate-300 border-slate-500/30",
   Vite: "bg-purple-500/10 text-purple-300 border-purple-500/30",
-  "yt-dlp": "bg-slate-500/10 text-slate-300 border-slate-500/30",
-  FFmpeg: "bg-rose-500/10 text-rose-300 border-rose-500/30",
+  Flutter: "bg-sky-500/10 text-sky-300 border-sky-500/30",
+  Firebase: "bg-yellow-500/10 text-yellow-300 border-yellow-500/30",
 };
 
 const getTechClass = (tech: string) =>
   techStyles[tech] ?? "bg-slate-800/50 text-slate-300 border-slate-700/50";
 
 const projects: Project[] = [
+  {
+    title: "CONNTEC",
+    subtitle: "Fullstack | Flutter & Next.js",
+    description:
+      "Plataforma de automação contábil voltada para instituições públicas, unificando app mobile e painel web para simplificar processos de gestão contábil.",
+    tech: ["Flutter", "Next.js", "Firebase", "TypeScript"],
+    imageAlt: "Projeto CONNTEC",
+    links: [{ label: "Repo", href: "https://github.com/conntec" }],
+  },
+  {
+    title: "Sisteminha Comunidades",
+    subtitle: "Fullstack | Next.js & React",
+    description:
+      "Plataforma criada para apoiar comunidades tradicionais em projetos de segurança alimentar, centralizando cadastro e acompanhamento de informações.",
+    tech: ["Next.js", "React", "TypeScript", "Firebase"],
+    imageAlt: "Projeto Sisteminha Comunidades",
+    links: [
+      { label: "Demo", href: "https://sisteminha-comunidades.vercel.app" },
+    ],
+  },
   {
     title: "Agenda Smile API",
     subtitle: "Backend | Django REST Framework",
@@ -91,25 +110,6 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Notify Me API",
-    subtitle: "Backend | FastAPI",
-    description:
-      "Microserviço desenvolvido em Python com FastAPI para validação e envio de mensagens de contato. Implementa envio assíncrono utilizando SMTP.",
-    tech: ["Python", "FastAPI", "SMTP"],
-    image: apiAudioForceImg,
-    imageAlt: "Tela da API Notify Me",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/antonioclaudioofc/notify-me-api",
-      },
-      {
-        label: "Demo",
-        href: "https://notify-me-dev.vercel.app/docs",
-      },
-    ],
-  },
-  {
     title: "Arena Manager Web",
     subtitle: "Frontend | React",
     description:
@@ -125,83 +125,117 @@ const projects: Project[] = [
       { label: "Demo", href: "https://arena-manager-azure.vercel.app/" },
     ],
   },
-  {
-    title: "API Audio Force",
-    subtitle: "Backend | FastAPI",
-    description:
-      "API em FastAPI para baixar vídeos ou playlists do YouTube (limitado a 10 itens), gerar um arquivo ZIP e entregá-lo via streaming, removendo automaticamente os arquivos temporários.",
-    tech: ["Python", "FastAPI", "yt-dlp", "FFmpeg"],
-    image: apiAudioForceImg,
-    imageAlt: "Tela da API Audio Force",
-    links: [
-      {
-        label: "Repo",
-        href: "https://github.com/antonioclaudioofc/api_audio_force",
-      },
-      {
-        label: "Demo",
-        href: "https://api-audio-force.vercel.app/docs",
-      },
-    ],
-  },
 ];
 
 export function Projects() {
   return (
     <motion.section
       id="projects"
-      className="w-full py-24 px-4 bg-[#1e242c] relative border-t border-white/5"
+      className="w-full py-24 px-4 relative border-t"
+      style={{
+        backgroundColor: "var(--color-bg)",
+        borderColor: "var(--color-border)",
+      }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-12">
         <div className="mb-16">
           <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-extrabold tracking-wider text-5xl sm:text-6xl md:text-[4rem] lg:text-[4.5rem] leading-none"
+            transition={{ duration: 0.4 }}
+            className="font-heading font-bold tracking-tight text-5xl sm:text-6xl md:text-[4rem] lg:text-[4.5rem] leading-none"
           >
-            <span className="text-white">Projetos </span>
-            <span className="text-teal-500">recentes</span>
+            <span style={{ color: "var(--color-text)" }}>Projetos </span>
+            <span style={{ color: "var(--color-accent)" }}>recentes</span>
           </motion.h2>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.slice(0, 6).map((p, i) => (
+          {projects.map((p, i) => (
             <motion.article
-              key={i}
-              className="flex flex-col rounded-md overflow-hidden bg-[#242b35] border border-white/5 hover:border-teal-500/30 group transition-all duration-300"
+              key={p.title}
+              className="flex flex-col rounded-md overflow-hidden border group transition-all duration-300 hover:-translate-y-1"
+              style={{
+                backgroundColor: "var(--color-bg-alt)",
+                borderColor: "var(--color-border)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor =
+                  "var(--color-accent-border)";
+                e.currentTarget.style.boxShadow =
+                  "0 12px 30px -12px var(--color-accent-soft)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-border)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 * i, duration: 0.5 }}
+              transition={{ delay: 0.06 * i, duration: 0.4 }}
             >
-              <div className="w-full aspect-video relative overflow-hidden bg-[#1e242c]">
-                <img
-                  src={p.image}
-                  alt={p.imageAlt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
+              <div
+                className="w-full aspect-video relative overflow-hidden"
+                style={{ backgroundColor: "var(--color-bg)" }}
+              >
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={p.imageAlt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full flex items-center justify-center"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, var(--color-bg-elevated), var(--color-bg))",
+                    }}
+                  >
+                    <FaCode
+                      className="text-5xl transition-transform duration-500 group-hover:scale-110"
+                      style={{ color: "var(--color-accent)" }}
+                      aria-label={p.imageAlt}
+                    />
+                  </div>
+                )}
+                <div
+                  className="absolute inset-0 opacity-90"
+                  style={{
+                    background:
+                      "linear-gradient(to top, var(--color-bg-alt), transparent 60%)",
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#242b35] via-transparent to-transparent opacity-90" />
               </div>
 
               <div className="p-8 pt-4 flex flex-col flex-1 relative z-10">
                 <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-white mb-1">
+                  <h3
+                    className="text-2xl font-bold mb-1"
+                    style={{ color: "var(--color-text)" }}
+                  >
                     {p.title}
                   </h3>
                   {p.subtitle && (
-                    <p className="text-sm text-teal-400 font-semibold">
+                    <p
+                      className="text-sm font-semibold"
+                      style={{ color: "var(--color-accent)" }}
+                    >
                       {p.subtitle}
                     </p>
                   )}
                 </div>
 
-                <p className="text-slate-400 text-sm flex-1 leading-relaxed mb-6">
+                <p
+                  className="text-sm flex-1 leading-relaxed mb-6"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
                   {p.description}
                 </p>
 
@@ -228,11 +262,18 @@ export function Projects() {
                           href={l.href}
                           target="_blank"
                           rel="noreferrer"
-                          className={`flex-1 flex justify-center items-center gap-2 text-sm px-4 py-3 rounded-md font-bold transition-all ${
+                          className={`flex-1 flex justify-center items-center gap-2 text-sm px-4 py-3 rounded-md font-bold transition-all duration-200 hover:-translate-y-0.5 ${isDemo ? "btn-accent" : ""}`}
+                          style={
                             isDemo
-                              ? "bg-teal-500 hover:bg-teal-400 text-white shadow-sm hover:-translate-y-0.5"
-                              : "bg-[#1e242c] hover:bg-[#2a323c] text-white border border-white/5 hover:-translate-y-0.5"
-                          }`}
+                              ? undefined
+                              : {
+                                  backgroundColor: "var(--color-bg)",
+                                  color: "var(--color-text)",
+                                  borderWidth: 1,
+                                  borderStyle: "solid",
+                                  borderColor: "var(--color-border)",
+                                }
+                          }
                         >
                           {isRepo && <FaGithub className="text-lg" />}
                           {isDemo && <FaEarthAmericas className="text-lg" />}

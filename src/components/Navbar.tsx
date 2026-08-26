@@ -1,13 +1,17 @@
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "../hooks/useTheme";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { label: "Início", href: "#home" },
     { label: "Sobre Mim", href: "#about" },
+    { label: "Experiência", href: "#experience" },
     { label: "Habilidades", href: "#skills" },
     { label: "Projetos", href: "#projects" },
     { label: "Contato", href: "#contact" },
@@ -74,34 +78,41 @@ export function Navbar() {
 
   return (
     <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 bg-[#1e242c] border-b border-white/5"
+      className="fixed top-0 left-0 right-0 z-50 border-b"
+      style={{
+        backgroundColor: "var(--color-bg)",
+        borderColor: "var(--color-border)",
+      }}
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between items-center h-24">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
           >
             <a
               href="#home"
               className="flex items-center"
               onClick={(e) => handleNavClick(e, "#home")}
             >
-              <span className="font-extrabold text-2xl text-white tracking-tight">
+              <span
+                className="font-heading font-bold text-xl sm:text-2xl tracking-tight"
+                style={{ color: "var(--color-text)" }}
+              >
                 Antonio Claudio
               </span>
             </a>
           </motion.div>
 
           <motion.div
-            className="max-lg:hidden flex items-center gap-10"
+            className="max-lg:hidden flex items-center gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
           >
             {navItems.map((item) => {
               const sectionId = item.href.substring(1);
@@ -112,9 +123,12 @@ export function Navbar() {
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-sm font-medium transition-colors duration-300 ${
-                    isActive ? "text-white" : "text-slate-400 hover:text-white"
-                  }`}
+                  className="text-sm font-medium transition-colors duration-200"
+                  style={{
+                    color: isActive
+                      ? "var(--color-text)"
+                      : "var(--color-text-muted)",
+                  }}
                 >
                   {item.label}
                 </a>
@@ -122,52 +136,77 @@ export function Navbar() {
             })}
           </motion.div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="max-lg:block lg:hidden relative w-10 h-10 flex items-center justify-center cursor-pointer text-white"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? (
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            )}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="w-10 h-10 flex items-center justify-center rounded-lg border cursor-pointer transition-colors duration-200"
+              style={{
+                borderColor: "var(--color-border)",
+                color: "var(--color-accent)",
+              }}
+              aria-label={
+                theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"
+              }
+            >
+              {theme === "dark" ? (
+                <FaSun className="text-base" />
+              ) : (
+                <FaMoon className="text-base" />
+              )}
+            </button>
+
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="max-lg:flex lg:hidden relative w-10 h-10 items-center justify-center cursor-pointer"
+              style={{ color: "var(--color-text)" }}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
       <motion.div
-        className="lg:hidden overflow-hidden absolute left-0 right-0 top-full bg-[#1e242c] border-b border-white/5"
+        className="lg:hidden overflow-hidden absolute left-0 right-0 top-full border-b"
+        style={{
+          backgroundColor: "var(--color-bg)",
+          borderColor: "var(--color-border)",
+        }}
         initial={{ height: 0, opacity: 0 }}
         animate={{
           height: isOpen ? "auto" : 0,
           opacity: isOpen ? 1 : 0,
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
       >
         <div className="flex flex-col p-6 space-y-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           {navItems.map((item) => {
@@ -178,9 +217,12 @@ export function Navbar() {
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-base font-medium transition-colors py-2 ${
-                  isActive ? "text-teal-400" : "text-slate-400"
-                }`}
+                className="text-base font-medium transition-colors py-2"
+                style={{
+                  color: isActive
+                    ? "var(--color-accent)"
+                    : "var(--color-text-muted)",
+                }}
                 onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.label}

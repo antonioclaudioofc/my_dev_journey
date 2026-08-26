@@ -5,8 +5,8 @@ import { FaEnvelope, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 const contactCards = [
   {
     title: "Email",
-    value: "antonioclaudioofc@gmail.com",
-    href: "mailto:antonioclaudioofc@gmail.com",
+    value: "claudioalvesdev@gmail.com",
+    href: "mailto:claudioalvesdev@gmail.com",
     icon: FaEnvelope,
   },
   {
@@ -106,11 +106,15 @@ export function Contact() {
   return (
     <motion.section
       id="contact"
-      className="w-full py-24 px-4 bg-[#242b35] border-t border-white/5 overflow-hidden"
+      className="w-full py-24 px-4 border-t overflow-hidden"
+      style={{
+        backgroundColor: "var(--color-bg-alt)",
+        borderColor: "var(--color-border)",
+      }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-12">
         <div className="mb-16">
@@ -118,17 +122,23 @@ export function Contact() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="font-extrabold tracking-wider text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] leading-none"
+            className="font-heading font-bold tracking-tight text-4xl sm:text-5xl md:text-[4rem] lg:text-[4.5rem] leading-none"
           >
-            <span className="text-white">Fale </span>
-            <span className="text-teal-500">comigo</span>
+            <span style={{ color: "var(--color-text)" }}>Fale </span>
+            <span style={{ color: "var(--color-accent)" }}>comigo</span>
           </motion.h2>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2 items-start">
           <div className="space-y-6">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
-              <span className="w-8 h-px bg-teal-500"></span>
+            <h3
+              className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3"
+              style={{ color: "var(--color-text)" }}
+            >
+              <span
+                className="w-8 h-px"
+                style={{ backgroundColor: "var(--color-accent)" }}
+              ></span>
               Informações
             </h3>
 
@@ -140,21 +150,44 @@ export function Contact() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.1 * index }}
+                  transition={{ delay: 0.08 * index, duration: 0.3 }}
                   key={card.title}
                   href={card.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center gap-3 sm:gap-5 rounded-md border border-white/5 bg-[#1e242c] p-3 sm:p-5 transition-all hover:border-teal-500/30"
+                  className="group flex items-center gap-3 sm:gap-5 rounded-md border p-3 sm:p-5 transition-all duration-200"
+                  style={{
+                    backgroundColor: "var(--color-bg)",
+                    borderColor: "var(--color-border)",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.borderColor =
+                      "var(--color-accent-border)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.borderColor = "var(--color-border)")
+                  }
                 >
-                  <span className="flex-shrink-0 flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-md bg-[#242b35] text-teal-500 group-hover:scale-110 group-hover:bg-teal-500/10 transition-all">
+                  <span
+                    className="flex-shrink-0 flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-md group-hover:scale-110 transition-all duration-200"
+                    style={{
+                      backgroundColor: "var(--color-bg-alt)",
+                      color: "var(--color-accent)",
+                    }}
+                  >
                     <Icon className="text-lg sm:text-2xl" />
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs sm:text-sm font-medium text-slate-400 mb-1">
+                    <p
+                      className="text-xs sm:text-sm font-medium mb-1"
+                      style={{ color: "var(--color-text-muted)" }}
+                    >
                       {card.title}
                     </p>
-                    <p className="text-sm sm:text-lg font-bold text-white break-all sm:break-normal">
+                    <p
+                      className="text-sm sm:text-lg font-bold break-all sm:break-normal"
+                      style={{ color: "var(--color-text)" }}
+                    >
                       {card.value}
                     </p>
                   </div>
@@ -168,17 +201,30 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
-              <span className="w-8 h-px bg-teal-500"></span>
+            <h3
+              className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3"
+              style={{ color: "var(--color-text)" }}
+            >
+              <span
+                className="w-8 h-px"
+                style={{ backgroundColor: "var(--color-accent)" }}
+              ></span>
               Envie uma mensagem
             </h3>
             <form
-              className="rounded-md border border-white/5 bg-[#1e242c] p-4 sm:p-8"
+              className="rounded-md border p-4 sm:p-8"
+              style={{
+                backgroundColor: "var(--color-bg)",
+                borderColor: "var(--color-border)",
+              }}
               onSubmit={handleSubmit}
             >
               <div className="space-y-5">
                 <label className="block">
-                  <span className="text-sm font-semibold text-slate-400 mb-2 block">
+                  <span
+                    className="text-sm font-semibold mb-2 block"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     Nome
                   </span>
                   <input
@@ -187,12 +233,15 @@ export function Contact() {
                     placeholder="Seu nome"
                     value={formValues.name}
                     onChange={handleChange}
-                    className="w-full rounded-md border border-white/5 bg-[#242b35] px-4 py-3.5 text-white placeholder:text-slate-500 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 focus:outline-none transition-colors"
+                    className="field-input w-full rounded-md px-4 py-3.5"
                   />
                 </label>
 
                 <label className="block">
-                  <span className="text-sm font-semibold text-slate-400 mb-2 block">
+                  <span
+                    className="text-sm font-semibold mb-2 block"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     E-mail
                   </span>
                   <input
@@ -201,12 +250,15 @@ export function Contact() {
                     placeholder="Seu e-mail"
                     value={formValues.email}
                     onChange={handleChange}
-                    className="w-full rounded-md border border-white/5 bg-[#242b35] px-4 py-3.5 text-white placeholder:text-slate-500 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 focus:outline-none transition-colors"
+                    className="field-input w-full rounded-md px-4 py-3.5"
                   />
                 </label>
 
                 <label className="block">
-                  <span className="text-sm font-semibold text-slate-400 mb-2 block">
+                  <span
+                    className="text-sm font-semibold mb-2 block"
+                    style={{ color: "var(--color-text-muted)" }}
+                  >
                     Mensagem
                   </span>
                   <textarea
@@ -215,14 +267,14 @@ export function Contact() {
                     placeholder="Sua mensagem"
                     value={formValues.message}
                     onChange={handleChange}
-                    className="w-full rounded-md border border-white/5 bg-[#242b35] px-4 py-3.5 text-white placeholder:text-slate-500 focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 focus:outline-none resize-none transition-colors"
+                    className="field-input w-full rounded-md px-4 py-3.5 resize-none"
                   />
                 </label>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto mt-4 inline-flex items-center justify-center rounded-md bg-teal-500 px-8 py-3.5 text-white font-bold transition-all hover:bg-teal-400 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
+                  className="btn-accent w-full sm:w-auto mt-4 inline-flex items-center justify-center rounded-md px-8 py-3.5 font-bold disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
                 >
                   {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
                 </button>

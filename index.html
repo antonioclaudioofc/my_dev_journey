@@ -5,17 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/src/index.css" />
+    <meta name="theme-color" content="#1e242c" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     <title>
-      Antonio Claudio | Desenvolvedor Full Stack React, Django & FastAPI
+      Antonio Claudio | Desenvolvedor Full Stack Java, React & Python
     </title>
     <meta
       name="description"
-      content="Antonio Claudio é um Desenvolvedor Full Stack especializado em React, Python (Django/FastAPI), TypeScript e SQL. Confira meus projetos e entre em contato."
+      content="Antonio Claudio é um Desenvolvedor Full Stack especializado em Java, Spring Boot, Angular, React, React Native e Python (Django/FastAPI). Confira minha experiência, projetos e entre em contato."
     />
     <meta
       name="keywords"
-      content="Antonio Claudio, Antonio Claudio desenvolvedor, Antonio Claudio full stack, desenvolvedor full stack, React, Django, FastAPI, Python, TypeScript, portfólio"
+      content="Antonio Claudio, Antonio Claudio desenvolvedor, Antonio Claudio full stack, desenvolvedor full stack, Java, Spring Boot, Angular, React, React Native, Django, FastAPI, Python, TypeScript, portfólio"
     />
     <meta name="author" content="Antonio Claudio" />
     <meta name="robots" content="index, follow" />
@@ -28,7 +39,7 @@
     />
     <meta
       property="og:description"
-      content="Especialista em React, Django e FastAPI. Transformando ideias em soluções robustas."
+      content="Especialista em Java, Spring Boot, Angular, React e Python. Transformando ideias em soluções robustas."
     />
     <meta property="og:image" content="/og-image.png" />
     <meta property="og:url" content="https://antonioclaudio.dev/" />
@@ -44,9 +55,13 @@
           "https://github.com/antonioclaudioofc",
           "https://www.linkedin.com/in/antonioclaudioofc/"
         ],
-        "description": "Desenvolvedor Full Stack com foco em tecnologias modernas como React, Django e FastAPI.",
+        "description": "Desenvolvedor Full Stack com foco em Java, Spring Boot, Angular, React e Python.",
         "knowsAbout": [
+          "Java",
+          "Spring Boot",
+          "Angular",
           "React",
+          "React Native",
           "Django",
           "FastAPI",
           "Python",

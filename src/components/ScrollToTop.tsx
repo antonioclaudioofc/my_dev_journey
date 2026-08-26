@@ -35,7 +35,12 @@ export function ScrollToTop() {
         opacity: { duration: 0.3 },
         y: { duration: 2.6, repeat: Infinity, ease: "easeInOut" },
       }}
-      className="fixed bottom-6 right-6 z-50 flex cursor-pointer h-12 w-12 items-center justify-center rounded-full border border-emerald-400/40 bg-slate-900/80 text-emerald-300 shadow-lg shadow-emerald-900/40 transition-all hover:-translate-y-1 hover:border-emerald-300 hover:text-emerald-200"
+      className="fixed bottom-6 right-6 z-50 flex cursor-pointer h-12 w-12 items-center justify-center rounded-full border shadow-lg transition-all duration-200 hover:-translate-y-1"
+      style={{
+        borderColor: "var(--color-accent-border)",
+        backgroundColor: "var(--color-bg-elevated)",
+        color: "var(--color-accent)",
+      }}
       aria-label="Voltar ao inicio"
     >
       <FaChevronUp className="text-lg" />
